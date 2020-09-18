@@ -1,0 +1,62 @@
+@theme-color: #ffc300;
+@theme-text: #fff;
+@grey: #ccc;
+
+.themeColor {
+    color: @theme-color;
+}
+.themeBg {
+    background-color: @theme-color;
+}
+.themeTextColor {
+    color: @theme-text;
+}
+.btn-theme {
+    background-color: @theme-color;
+    &:hover {
+        filter: hue-rotate(-5deg);
+    }
+}
+
+.loyalMainNav {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 20px 24px rgba(38, 38, 38, 0.3);
+	display: flex;
+	font-size: 0.9em;
+	padding: 0 0.5em;
+	margin: 2em 0;
+	a {
+		text-transform: uppercase;
+		padding: 1em;
+		flex-grow: 1;
+		text-decoration: none;
+		color: @grey;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		&:not(:last-child) {
+			border-right: 1px solid rgba(0, 0, 0, 0.2);
+		}
+		&.active {
+			color: @theme-color;
+			&:after {
+				content: '';
+				position: absolute;
+				left: 5px;
+				right: 5px;
+				bottom: 0;
+				height: 4px;
+				background-color: @theme-color;
+			}
+		}
+	}
+	i {
+		font-size: 1.5em;
+	}
+	span {
+		padding-left: 0.5em;
+		color: darken(@grey, 30%);
+	}
+}

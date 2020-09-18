@@ -1,0 +1,36 @@
+
+.profPoints {
+    .icon-star {
+        font-size: 4em;
+    }
+    strong {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+}
+.profNav {
+    a {
+        > i {
+            width: 2.5em;
+            height: 2.5em;
+            font-size: 1.5em;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+        small:before {
+            content: '';
+            width: 1em;
+            height: 1em;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            position: absolute;
+            right: 1em;
+            top: 50%;
+            transform: rotate(45deg) translateY(-50%);
+        }
+    }
+}

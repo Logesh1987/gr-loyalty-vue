@@ -1,0 +1,380 @@
+@theme-color: #ffc300;
+@theme-text: #fff;
+@grey: #ccc;
+
+.themeColor {
+    color: @theme-color;
+}
+.themeBg {
+    background-color: @theme-color;
+}
+.themeTextColor {
+    color: @theme-text;
+}
+.btn-theme {
+    background-color: @theme-color;
+    &:hover {
+        filter: hue-rotate(-5deg);
+    }
+}
+
+.loyalNotify {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 30px 30px 30px 0;
+    p {
+        margin: 0;
+        font-size: 0.8em;
+    }
+}
+.loyalWelcome {
+    background-color: #fff;
+    border: 1px solid #B2B2B2;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(38, 38, 38, 0.2);
+    padding: 20px;
+    text-align: center;
+    p {
+        font-size: 0.9em;
+        &:last-of-type {
+            margin: 0;
+        }
+    }
+    hr {
+        opacity: 0.8;
+        margin: 1em 0;
+    }
+    .btn {
+        background-color: @theme-color;
+        padding: 0.8em 2em;
+    }
+}
+
+.loyalCover {
+    text-align: center;
+    position: relative;
+    span {
+        display: block;
+        padding: 1em 2em;
+        background-color: #fff;
+        clip-path: polygon(0% 50%, 5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%);
+    }
+    &:before {
+        content: '';
+        width: 200%;
+        height: 2px;
+        position: absolute;
+        background-color: #8a8a8a;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.loyalEarn {
+    .card-header {
+        cursor: pointer;
+        .icon-play-right1 {
+            display: inline-block;
+            transition: transform 0.4s;
+        }
+        &:not(.collapsed) {
+            .icon-play-right1 {
+                transform: rotate(90deg);
+            }
+        }
+        .icon-claim {    
+            width: 1.5em;
+            height: 1.5em;
+            font-size: 1.4em;
+            line-height: 1;
+        }
+    }
+}
+.earnSlider {
+    &.swiper-container {
+        padding-bottom: 40px;
+        .swiper-pagination-wrap {
+            position: absolute;
+            width: 100%;
+            bottom: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .swiper-pagination {
+            width: auto;
+            position: relative;
+            padding: 0 10px;
+            display: inline-block;
+            &:after,
+            &:before {
+                content: '';
+                width: 80vw;
+                height: 1px;
+                background-color: #ccc;
+                position: absolute;
+                top: 50%;
+            }
+            &:before {
+                left: 0;
+                transform: translateX(-100%);
+            }
+            &:after {
+                right: 0;
+                transform: translateX(100%);
+            }
+        }
+    }
+    .swiper-wrapper {
+        height: auto;
+    }
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        margin: 0 3px;
+        &-active {
+            background-color: #fff;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+        }
+    }
+}
+.starPoints {
+    background-color: @theme-color;
+    padding: 0.3em;
+    border-radius: 2em;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    &:before {
+        content: '\e906';
+        font-family: icomoon;
+        font-size: 1.4em;
+        display: inline-block;
+        margin-right: 3px;
+    }
+}
+.loyalBirthdayHeader {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #B2B2B2;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(38, 38, 38, 0.2);
+    i.icon-cake {
+        color: @theme-color;
+        font-size: 1.3em;
+    }
+}
+.bonusBox {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #B2B2B2;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(38, 38, 38, 0.2);
+    figure {
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #FEB67E;
+        font-size: 2em;
+        margin-right: 0.6em;
+    }  
+    h5 {
+        font-size: 0.9em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+}
+.referralInfoBox {
+    > div {
+        border: 2px dotted;
+        width: 48%;
+        > i[class*="icon-"] {
+            width: 3.5em;
+            height: 3.5em;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            background-color: @theme-color;
+            margin-top: -3em;
+        }
+    }
+}
+.copyBox {
+    button {
+        right: 0;
+        top: 0;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.inviteFriends {
+    position: relative;
+    z-index: 1;
+    &:after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        left: 0;
+        background: radial-gradient(circle closest-side, #FFFFFF 80%, rgba(255,255,255,0) 0) 0 0px;
+        background-size: 12px 12px;
+        background-repeat: repeat-x;
+    }
+    nav a {
+        width: 2.6em;
+        height: 2.6em;
+        border: 2px solid;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: inherit;
+        font-size: 1.2em;
+    }
+}
+.inviteDash {
+    border: 2px dotted;
+    margin-top: -2em;
+}
+.referralCouponList {
+    position: relative;
+    &:before {
+        content: '';
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 30%;
+        opacity: 0.2;
+        border-right: 1px dashed;
+    }
+
+}
+.rCard {
+    .date {
+        width: 50%;
+        position: relative;
+        &:after {
+            content: '';
+            width: 1em;
+            height: 1em;
+            background-color: @theme-color;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 1.3em;
+            transform: translateX(50%);
+        }
+    }
+    .badge {
+        font-size: 1em;
+        font-weight: 500;
+    }
+    .coupon {
+        background-color: #E7F5FE;
+        border: 1px dashed #427BB9;
+        font-size: 1.3em;
+        position: relative;
+        a {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+.claimView {
+    .totalClaims {
+        font-size: 1.2em;
+        text-align: center;
+        overflow: hidden;
+        .badge {
+            position: relative;
+            &::before,
+            &::after {
+                background-color: #ccc;
+                content: '';
+                height: 1px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+            }
+            &:before {
+                left: -105%;
+            }
+            &:after {
+                right: -105%;
+            }
+        }
+    }
+    .claimList {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .claimCard {
+        width: 48%;
+        &.active {
+            width: 100%;
+        }
+        .floater {
+            width: 3.7em;
+            height: 3.7em;
+            position: absolute;
+            text-align: center;
+            right: 10px;
+            padding: 3px;
+            top: 0;
+            transform: translateY(-50%);
+            p {
+                margin: 0 0 5px;
+                border-bottom: 1px solid;
+            }
+            small {                
+                font-size: 0.6em;
+                opacity: 0.6;
+                line-height: 1.2;
+                display: block;
+            }
+        }
+        &.active {
+            background-color: #fff;
+            padding: 20px;
+            align-items: center;
+            figure {
+                width: 50%;
+                position: relative;
+            }
+            figcaption {
+                position: absolute !important;
+                top: 20px;
+                padding: 0 !important;
+                width: 120%;
+                span {
+                    display: none;
+                }
+            }
+            > div {
+                padding-left: 2em !important;
+            }
+        }
+    }
+    .claimConfirm {
+        background-color: rgba(0,0,0,0.5);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+}
