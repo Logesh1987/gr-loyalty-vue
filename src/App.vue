@@ -3,12 +3,18 @@
     <a href="#" class="loyalClose">
       <i class="far fa-times-circle"></i>
     </a>
-    <HeaderAsset path="https://logesh1987.github.io/gr-loyalty/images/comp/img-header.jpg" />
+    <HeaderAsset
+      v-if="initialData"
+      :path="'https://s3.us-east-1.amazonaws.com/devam.pro/gr/master/'+initialData.attributes.image_url"
+    />
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>-->
-    <div class="loyalBody" style="background-image: url(https://logesh1987.github.io/gr-loyalty/images/comp/bg_pattern.jpg);">
+    <div
+      class="loyalBody"
+      style="background-image: url(https://logesh1987.github.io/gr-loyalty/images/comp/bg_pattern.jpg);"
+    >
       <Header />
       <router-view />
       <Footer />
@@ -20,13 +26,33 @@
 import HeaderAsset from "./components/HeaderAsset";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { mapActions, mapState } from "vuex";
+import Vue from "vue";
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+// Install BootstrapVue
+Vue.use(BootstrapVue);
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin);
+
 export default {
-  components: { HeaderAsset, Footer, Header }
+  components: { HeaderAsset, Footer, Header },
+  computed: {
+    ...mapState(["initialData"])
+  },
+  methods: {
+    ...mapActions(["getData"])
+  },
+  mounted: async function() {
+    const dd = await this.getData();
+    console.log(dd);
+  }
 };
 </script>
 
 <style lang="less">
-@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
 @theme-color: #ffc300;
 @theme-text: #fff;
 @grey: #ccc;

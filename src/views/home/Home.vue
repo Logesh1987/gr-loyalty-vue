@@ -20,9 +20,9 @@
     <div class="loyalViews">
       <div class="homeView" v-if="activeView === 1">
         <div class="loyalWelcome my-4">
-          <p>Welcome to Happy Perks, a rewards program! Its FREE to join & filled with Perks!</p>
+          <p>{{ initialData.attributes.points_settings.welcome_bonus_title }}</p>
           <p class="themeColor">
-            <strong>Earn 250 welcome Points!</strong>
+            <strong>Earn {{ initialData.attributes.points_settings.welcome_bonus }} welcome Points!</strong>
           </p>
           <button class="btn">Create Account</button>
           <hr />
@@ -32,89 +32,50 @@
           </p>
         </div>
         <div class="loyalCover my-4">
-          <span>Get 1 points for every $1 you spend!</span>
+          <span
+            v-if="initialData.attributes.points_settings.points_value === 'fixed'"
+          >Get {{ initialData.attributes.points_settings.points }} points for every {{ initialData.attributes.currency }}{{ initialData.attributes.points_settings.price }} you spend!</span>
+          <span
+            v-else
+          >Get {{ initialData.attributes.points_settings.price }}% of purchase value as loyalty points</span>
         </div>
-        <div class="swiper-container earnSlider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div
-                class="loyalBirthdayHeader d-flex justify-content-between"
-                data-toggle="collapse"
-                href="#earn1"
-                role="button"
-                aria-expanded="false"
-                aria-controls="earn1"
-              >
-                <div>
-                  <i class="icon-cake"></i>
-                  <span class="pl-2">Enter your birthday</span>
-                </div>
-                <div>
-                  <div class="starPoints">100</div>
-                </div>
+        <swiper class="earnSlider" :options="earnSlider">
+          <swiper-slide>
+            <div v-b-toggle.earn1 class="loyalBirthdayHeader d-flex justify-content-between">
+              <div>
+                <i class="icon-cake"></i>
+                <span class="pl-2">Enter your birthday</span>
               </div>
-              <div class="collapse mx-3" id="earn1">
-                <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid.
-                </div>
+              <div>
+                <div class="starPoints">100</div>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div
-                class="loyalBirthdayHeader d-flex justify-content-between"
-                data-toggle="collapse"
-                href="#earn2"
-                role="button"
-                aria-expanded="false"
-                aria-controls="earn2"
-              >
-                <div>
-                  <i class="icon-cake"></i>
-                  <span class="pl-2">Enter your birthday</span>
-                </div>
-                <div>
-                  <div class="starPoints">100</div>
-                </div>
+            <b-collapse id="earn1" class="mx-3">
+              <b-card>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                richardson ad squid.
+              </b-card>
+            </b-collapse>
+          </swiper-slide>
+          <swiper-slide>
+            <div v-b-toggle.earn2 class="loyalBirthdayHeader d-flex justify-content-between">
+              <div>
+                <i class="icon-cake"></i>
+                <span class="pl-2">Enter your birthday</span>
               </div>
-              <div class="collapse mx-3" id="earn2">
-                <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid.
-                </div>
+              <div>
+                <div class="starPoints">100</div>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div
-                class="loyalBirthdayHeader d-flex justify-content-between"
-                data-toggle="collapse"
-                href="#earn3"
-                role="button"
-                aria-expanded="false"
-                aria-controls="earn3"
-              >
-                <div>
-                  <i class="icon-cake"></i>
-                  <span class="pl-2">Enter your birthday</span>
-                </div>
-                <div>
-                  <div class="starPoints">100</div>
-                </div>
-              </div>
-              <div class="collapse mx-3" id="earn3">
-                <div class="card card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination-wrap">
-            <div class="swiper-pagination"></div>
-          </div>
-          <!-- <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>-->
-        </div>
+            <b-collapse id="earn2" class="mx-3">
+              <b-card>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                richardson ad squid.
+              </b-card>
+            </b-collapse>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
         <div class="accordion loyalEarn my-4" id="accordionExample">
           <div class="card">
             <div
@@ -558,25 +519,42 @@
               <button class="w-50 mx-2 btn btn-theme">Ok</button>
             </nav>
           </div>
-        </div> -->
+        </div>-->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import './styles.less';
-import '@/assets/styles/icons.css';
-import '@/assets/styles/common.less';
+import "./styles.less";
+import "@/assets/styles/icons.css";
+import "@/assets/styles/common.less";
+import { mapState } from "vuex";
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/swiper-bundle.css";
 
 export default {
   name: "Home",
-  components: {},
-  data: function() {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  data() {
     return {
       activeView: 1,
-      activeClaimCard: null
-    }
+      activeClaimCard: null,
+      earnSlider: {
+        pagination: {
+          el: ".swiper-pagination"
+        }
+      }
+    };
+  },
+  computed: {
+    ...mapState(["initialData"])
+  },
+  watch: {
+    initialData: function() {}
   }
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div class="loyalHead">
-    <h1>Loyalty & Rewards Program</h1>
+  <div class="loyalHead" v-if="initialData">
+    <h1>{{ initialData.attributes.name }}</h1>
     <div>
       <div class="loyalProfile">
         <i class="icon-profile"></i>
-        <span>+500</span>
+        <span>+{{ initialData.attributes.points_settings.welcome_bonus }}</span>
       </div>
       <a href="#" class="hamMenu" :class="{'active': hamMenu}" @click.prevent="hamMenu = !hamMenu"></a>
     </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Header",
   props: {
@@ -42,7 +43,8 @@ export default {
       hamMenu: false
     };
   },
-  methods: {
+  computed: {
+    ...mapState(["initialData"])
   }
 };
 </script>
