@@ -1,4 +1,4 @@
-import Axios from 'axios'
+// import Axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import dData from './data';
@@ -21,11 +21,14 @@ export default new Vuex.Store({
   actions: {
     getData: ({ commit }) => {
       commit('updateLoader', true)
-      Axios.get('https://jai.devam.pro/gr/services/v2/loyalty?id=3817&includes=shop,rewards,events')
-      .then(({data}) => {
-        commit('updateInitialData', data.data)
-        return data.data;
-      })
+      commit('updateInitialData', dData)
+      commit('updateLoader', false)
+      return dData;
+      // Axios.get('https://jai.devam.pro/gr/services/v2/loyalty?id=3817&includes=shop,rewards,events')
+      // .then(({data}) => {
+      //   commit('updateInitialData', data.data)
+      //   return data.data;
+      // })
     }
   },
   modules: {
